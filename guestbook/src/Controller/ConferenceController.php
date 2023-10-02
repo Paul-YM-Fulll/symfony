@@ -12,15 +12,10 @@ class ConferenceController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(Request $request): Response
     {
-        $greet = '';
-        if ($name = $request->query->get('hello')) {
-            $greet = sprintf('<h1>Hello %s!</h1>', htmlspecialchars($name));
-        }
         {
             return new Response(<<<EOF
                 <html>
                     <body style="display:flex;justify-content:center;background-color:lightgrey;">
-                    $greet
                     <img src="/images/under-construction.gif" /></body>
                 </html>
             EOF);
