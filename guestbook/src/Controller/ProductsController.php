@@ -48,11 +48,10 @@ class ProductsController extends AbstractController
         $filteredArray = $this->products;
         return new JsonResponse($filteredArray);
     }
-
+    
     #[Route('/products/{id}', name: 'product')]
-    public function product(int $id = 0): JsonResponse
+    public function product(int $id): JsonResponse
     {
-        
         if ($id){
             $product = array_filter($this->products, function ($var) use ($id) {
                 return ($var['id'] == $id);
