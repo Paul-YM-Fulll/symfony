@@ -3,7 +3,7 @@
 {% block body %}
     <h2>Give your feedback!</h2>
     {% for conference in conferences %}
-        <h4>{{ conference }}</h4>
+        <h4>{{ conference}} - {{conference.comments|length > 0 ? conference.comments|length : 'No '}} comments</h4>
         <p>
             <a href="{{ path('conference', { slug: conference.slug }) }}">View</a>
         </p>
