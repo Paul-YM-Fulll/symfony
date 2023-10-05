@@ -36,6 +36,7 @@ class Comment implements \Stringable
     public function setCreatedAtValue(): static
     {
         $this->createdAt = new \DateTimeImmutable();
+
         return $this;
     }
 

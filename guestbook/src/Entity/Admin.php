@@ -2,16 +2,15 @@
 
 namespace App\Entity;
 
-use Stringable;
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\AdminRepository;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: AdminRepository::class)]
 #[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
-class Admin implements UserInterface, PasswordAuthenticatedUserInterface, Stringable
+class Admin implements UserInterface, PasswordAuthenticatedUserInterface, \Stringable
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

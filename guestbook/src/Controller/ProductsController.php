@@ -3,14 +3,11 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProductsController extends AbstractController
 {
-
     public array $products = [
         [
           'id' => 1,
@@ -39,24 +36,26 @@ class ProductsController extends AbstractController
           'price' => 1299.99,
           'description' => 'Apple MacBook Pro 13" 256 Go SSD 8 Go RAM Intel Core i5 quadricœur à 1,4 GHz Argent',
           'category' => 'laptop',
-        ]
+        ],
     ];
 
     #[Route('/products', name: 'products')]
     public function products(): JsonResponse
     {
         $filteredArray = $this->products;
+
         return new JsonResponse($filteredArray);
     }
-    
+
     #[Route('/products/{id}', name: 'product')]
     public function product(int $id): JsonResponse
     {
-        if ($id){
+        if ($id) {
             $product = array_filter($this->products, function ($var) use ($id) {
-                return ($var['id'] == $id);
+                return $var['id'] == $id;
             });
-            return new JsonResponse (current($product));
+
+            return new JsonResponse(current($product));
         }
     }
 }
