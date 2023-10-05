@@ -33,9 +33,10 @@ class Comment implements \Stringable
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\PrePersist]
-    public function setCreatedAtValue()
+    public function setCreatedAtValue(): static
     {
         $this->createdAt = new \DateTimeImmutable();
+        return $this;
     }
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
